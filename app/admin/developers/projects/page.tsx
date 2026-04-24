@@ -166,7 +166,7 @@ export default function AdminDeveloperProjectsPage() {
       const method = editingId ? "PUT" : "POST";
 
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api${endpoint}`,
+        `${process.env.NEXT_PUBLIC_API_URL}${endpoint}`,
         {
           method,
           headers: {
