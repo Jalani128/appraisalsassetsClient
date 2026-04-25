@@ -52,7 +52,7 @@ export default function SignInPage() {
           <img
             src="/logo.png"
             alt="Logo"
-            className="h-16 w-auto mx-auto mb-4"
+            className="h-32 w-auto mx-auto mb-4"
           />
         </div>
 
