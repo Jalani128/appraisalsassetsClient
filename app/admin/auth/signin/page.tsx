@@ -49,8 +49,11 @@ export default function SignInPage() {
     <div className="min-h-screen flex items-center justify-center bg-primary-dark p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white mb-2 tracking-wider">A&A</h1>
-          <p className="text-lg text-[#C1A06E] tracking-[0.2em] font-medium">ADMIN</p>
+          <img
+            src="/logo.png"
+            alt="Logo"
+            className="h-16 w-auto mx-auto mb-4"
+          />
         </div>
 
         <div className="bg-primary-dark-muted rounded-2xl shadow-xl p-8 border border-primary-dark-border">
