@@ -8,83 +8,104 @@ import api from "@/lib/api";
 
 export default function Hero() {
   const [content, setContent] = useState({
-    badgeText: "RERA Certified | Trusted Since 2010",
-    headline: "Real Estate Agency in Dubai for Property Sales, Valuation & Advisory",
+    badgeText: "Trusted property intelligence for Dubai investors",
+    headline: "Modern property advisory powered by data, clarity, and speed.",
     description:
-    "Assets & Appraisals helps buyers, sellers, investors, landlords, and businesses make better property decisions in Dubai. We provide property sales support, real estate advisory, property valuation, leasing, and management services with a practical, market-led approach."
+      "Assets & Appraisals brings together real estate market insights, valuation intelligence, and responsive advisory for teams that need to move faster and make smarter decisions.",
   });
 
   useEffect(() => {
-    api.getSiteContent().then((res) => {
-      if (res.success && res.data?.hero) {
-        setContent({
-          badgeText: res.data.hero.badgeText || content.badgeText,
-          headline: res.data.hero.headline || content.headline,
-          description: res.data.hero.description || content.description,
-        });
-      }
-    }).catch(() => {});
+    api.getSiteContent()
+      .then((res) => {
+        if (res.success && res.data?.hero) {
+          setContent({
+            badgeText: res.data.hero.badgeText || content.badgeText,
+            headline: res.data.hero.headline || content.headline,
+            description: res.data.hero.description || content.description,
+          });
+        }
+      })
+      .catch(() => {});
   }, []);
 
   return (
-    <section className="hero min-h-[150vh] md:h-[125vh] w-full relative flex flex-col">
-      {/* Background Image */}
+    <section className="relative overflow-hidden bg-slate-950 text-white">
       <div
-        className="absolute inset-0 bg-cover bg-center md:bg-top-right lg:bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center opacity-60"
         style={{
           backgroundImage: `url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=2000")`,
         }}
       />
-
-      {/* Overlay for better text visibility */}
-      <div className="absolute inset-0 bg-slate-900/70" />
-
-      {/* Content */}
-      <div className="relative w-full grow flex flex-col">
-        <div className="z-10 max-w-7xl mx-auto flex flex-col items-start justify-start relative w-full px-4 md:px-8 lg:px-12 pt-24 md:pt-32 pb-40 md:pb-0">
-          <div className="text-left text-white">
-            <span className="inline-block bg-primary/20 text-primary px-4 py-2 rounded-full text-xs md:text-sm font-medium mb-6 border border-primary/30">
+      <div className="absolute inset-0 bg-slate-950/90" />
+      <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] items-center">
+          <div className="space-y-8">
+            <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
               {content.badgeText}
             </span>
-            <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-6 leading-tight tracking-tight max-w-xl">
-              {content.headline}
-            </h1>
-            <p className="text-base md:text-xl lg:text-2xl mb-8 max-w-3xl text-gray-200 leading-relaxed">
-              {content.description}
-            </p>
-            <Filter />
-
-            {/* CTA Buttons */}
-            <div className="mt-8 md:mt-10 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <button className="flex items-center justify-center gap-2 px-6 md:px-8 py-3 md:py-4 rounded-xl border border-white/60 text-white font-semibold hover:bg-white/10 transition-all duration-300 text-sm md:text-base w-full sm:w-auto">
-                View All Properties
-                <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
-              </button>
-              <button className="px-6 md:px-8 py-3 md:py-4 rounded-xl border border-primary text-primary font-semibold hover:bg-primary/10 transition-all duration-300 text-sm md:text-base w-full sm:w-auto">
-                Contact an Advisor
-              </button>
+            <div className="space-y-6">
+              <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+                {content.headline}
+              </h1>
+              <p className="max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+                {content.description}
+              </p>
             </div>
+
+            <div className="space-y-6">
+              <Filter />
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+                <button className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-primary/20 transition hover:bg-primary/90">
+                  View All Properties
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </button>
+                <button className="inline-flex items-center justify-center rounded-full border border-slate-200/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/15">
+                  Contact an Advisor
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2">
+            {[
+              {
+                title: "Real-time market clarity",
+                description: "Live Dubai property insights and valuations for faster decisions.",
+              },
+              {
+                title: "Tailored investment support",
+                description: "Advisory and asset strategies built around your goals.",
+              },
+              {
+                title: "Data-driven strategy",
+                description: "Practical recommendations informed by market trends and local demand.",
+              },
+              {
+                title: "Transparent execution",
+                description: "Clear next steps, streamlined communication, and trusted guidance.",
+              },
+            ].map((feature) => (
+              <div
+                key={feature.title}
+                className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl shadow-xl shadow-slate-950/20"
+              >
+                <p className="text-base font-semibold text-white">{feature.title}</p>
+                <p className="mt-3 text-sm leading-6 text-slate-300">{feature.description}</p>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="absolute z-10 bottom-0 w-full backdrop-blur-xl bg-gray-100/10 py-6 md:py-4 border-t border-primary/60">
-          <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex items-center flex-wrap justify-between gap-y-6 md:gap-y-0">
-            {ANALYTICS.map((item) => {
-              return (
-                <div
-                  className="flex flex-col items-center justify-center mx-auto md:mx-0 min-w-[140px] md:min-w-0"
-                  key={item.description}
-                >
-                  <h3 className="text-xl font-bold text-primary mb-1 md:mb-2 text-center">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs md:text-base text-gray-200 text-center">
-                    {item.description}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
+        <div className="mt-16 grid gap-4 sm:grid-cols-3">
+          {ANALYTICS.map((item) => (
+            <div
+              key={item.title}
+              className="rounded-3xl border border-white/10 bg-white/5 p-6 text-center shadow-lg shadow-slate-950/10"
+            >
+              <p className="text-3xl font-semibold text-primary">{item.title}</p>
+              <p className="mt-2 text-sm leading-6 text-slate-300">{item.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
