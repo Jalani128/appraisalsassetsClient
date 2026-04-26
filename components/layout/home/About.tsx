@@ -19,7 +19,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2 items-stretch">
               {[
                 {
                   title: "AI-backed insights",
@@ -32,16 +32,18 @@ export default function About() {
                   icon: <ShieldCheck className="h-5 w-5" />,
                 },
               ].map((item) => (
-                <div key={item.title} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-4">
-                    {item.icon}
+                <div key={item.title} className="flex h-full flex-col justify-between rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
+                  <div>
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-4">
+                      {item.icon}
+                    </div>
+                    <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm leading-6 text-slate-600">
+                      {item.description}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-semibold text-slate-900 mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm leading-6 text-slate-600">
-                    {item.description}
-                  </p>
                 </div>
               ))}
             </div>
@@ -81,7 +83,7 @@ export default function About() {
               </div>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2 items-stretch">
               {[
                 {
                   title: "Data-first strategy",
@@ -94,16 +96,18 @@ export default function About() {
                   icon: <ShieldCheck className="h-5 w-5" />,
                 },
               ].map((item) => (
-                <div key={item.title} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-4">
-                    {item.icon}
+                <div key={item.title} className="flex h-full flex-col justify-between rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <div>
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-4">
+                      {item.icon}
+                    </div>
+                    <h4 className="text-base font-semibold text-slate-900 mb-2">
+                      {item.title}
+                    </h4>
+                    <p className="text-sm leading-6 text-slate-600">
+                      {item.description}
+                    </p>
                   </div>
-                  <h4 className="text-base font-semibold text-slate-900 mb-2">
-                    {item.title}
-                  </h4>
-                  <p className="text-sm leading-6 text-slate-600">
-                    {item.description}
-                  </p>
                 </div>
               ))}
             </div>
